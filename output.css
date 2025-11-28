@@ -1,0 +1,165 @@
+/* 🟣 GENERAL LAYOUT */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #4c1d95, #7c3aed); /* deep purple gradient */
+  color: #e0f2fe; /* light teal text for contrast */
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem;
+  transition: background 0.3s ease-in-out;
+}
+
+/* 🛍️ PRODUCT GRID */
+#productList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+/* 🧃 PRODUCT CARDS */
+.product-card {
+  background: #6b21a8; /* deep purple */
+  color: #e0f2fe; /* light teal text */
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 8px 14px -4px rgba(37, 99, 235, 0.25);
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid #06b6d4; /* teal border */
+}
+
+.product-card:hover {
+  transform: scale(1.06);
+  box-shadow: 0 12px 25px -5px rgba(37, 99, 235, 0.3);
+  border-color: #22d3ee; /* brighter teal on hover */
+}
+
+.product-card img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-bottom: 0.75rem;
+  border: 2px solid #22d3ee; /* teal border */
+}
+
+.product-card h3 {
+  font-size: 1.1rem;
+  color: #a78bfa; /* light purple accent */
+  margin-bottom: 0.4rem;
+}
+
+.product-card p {
+  font-size: 0.9rem;
+  color: #c7d2fe; /* soft teal-ish text */
+}
+
+/* 🛒 CART ITEMS */
+#cart .cart-item {
+  background: #6d28d9/20; /* semi-transparent purple */
+  color: #e0f2fe;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.1);
+  border: 1px solid #06b6d4; /* teal border */
+}
+
+/* 🧩 BUTTONS */
+button {
+  background: linear-gradient(135deg, #06b6d4, #22d3ee); /* teal gradient */
+  color: #1e1e1e; /* dark text for contrast */
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #22d3ee, #06b6d4);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* 🪟 MODAL (Checkout) */
+#checkoutModal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(6px);
+  background: rgba(76, 29, 149, 0.25); /* purple overlay */
+  z-index: 100;
+}
+
+#checkoutModal.hidden {
+  display: none;
+}
+
+#checkoutModal .modal-content {
+  background: #6b21a8; /* deep purple */
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+  text-align: center;
+  color: #e0f2fe; /* light teal text */
+  border: 1px solid #22d3ee; /* teal border */
+}
+
+/* 💙 TOTAL DISPLAY */
+#cartTotal {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #22d3ee; /* teal highlight */
+  margin-top: 1rem;
+  text-align: right;
+}
+
+/* 🌊 SCROLLBAR */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #22d3ee, #06b6d4);
+  border-radius: 8px;
+}
+
+/* ✨ ANIMATIONS */
+.product-card {
+  opacity: 0;
+  animation: fadeIn 0.6s forwards;
+}
+
+.product-card:nth-child(odd) {
+  animation-delay: 0.2s;
+}
+.product-card:nth-child(even) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: modalIn 0.3s ease forwards;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
